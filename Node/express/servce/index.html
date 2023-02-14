@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+
+<body>
+  <div>中午吃什么？</div>
+  <br>
+  <div id="output"></div>
+  <br>
+  <button id="seesee" style="height: 40px; width: 80px">看看</button>
+</body>
+<script>
+  document.getElementById('seesee').addEventListener('click', function () {
+    fetch(`http://192.168.65.208:3000/drink`)
+      .then((res) => {
+        return res.text()
+      })
+      .then((text) => {
+        document.getElementById('output').innerHTML += text + '<br/>';
+      })
+  })
+</script>
+
+</html>
