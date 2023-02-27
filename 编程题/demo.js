@@ -113,6 +113,41 @@ function unique(arr) {
 }
 
 
+/**
+ *   控制最大并发请求数
+**/
+
+function concurrencyRequest(urls,maxNum){
+    let urlArr = [...urls]
+    let count = 0
+    let resNum = 0
+    let resArr = []
+
+    for (let i = 0; i < maxNum; i++) {
+        edit(resNum)
+    }
+
+    function edit(index){
+        count ++ 
+        resNum ++
+        fetch(urlArr[index]).then(res=>{
+            console.log(res)
+            resArr[index] = res 
+        }).catch(err=>{
+            console.log(err)
+            resArr[index] = err 
+        }).finally(()=>{
+            count --
+            if (resNum < urlArr.length) {
+                edit(resNum)
+            } else if( count === 0) {
+                console.log('resArr', resArr)
+            }
+        })
+    }
+}
+
+
 
 
 
