@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +13,7 @@
         }
     </style>
 </head>
+
 <body>
     <canvas></canvas>
     <div>
@@ -64,7 +66,12 @@
     // 初始化
     const init = event => {
         // 获取偏移量及坐标
-        const { offsetX, offsetY, pageX, pageY } = mobileStatus ? event.changedTouches[0] : event 
+        const {
+            offsetX,
+            offsetY,
+            pageX,
+            pageY
+        } = mobileStatus ? event.changedTouches[0] : event
 
         // 修改上次的偏移量及坐标
         client.offsetX = offsetX
@@ -87,13 +94,16 @@
     // 绘制
     const draw = event => {
         // 获取当前坐标点位
-        const { pageX, pageY } = mobileStatus ? event.changedTouches[0] : event
+        const {
+            pageX,
+            pageY
+        } = mobileStatus ? event.changedTouches[0] : event
         // 修改最后一次绘制的坐标点
         client.endX = pageX
         client.endY = pageY
 
         // 根据坐标点位移动添加线条
-        ctx.lineTo(pageX , pageY )
+        ctx.lineTo(pageX, pageY)
 
         // 绘制
         ctx.stroke()
@@ -108,8 +118,8 @@
     // 创建鼠标/手势按下监听器
     window.addEventListener(mobileStatus ? "touchstart" : "mousedown", init)
     // 创建鼠标/手势 弹起/离开 监听器
-    window.addEventListener(mobileStatus ? "touchend" :"mouseup", cloaseDraw)
-    
+    window.addEventListener(mobileStatus ? "touchend" : "mouseup", cloaseDraw)
+
     // 取消-清空画布
     const cancel = () => {
         // 清空当前画布上的所有绘制内容
@@ -134,4 +144,5 @@
         })
     }
 </script>
+
 </html>
