@@ -6,3 +6,4 @@
 
 <h6><a href="https://github.com/linzhi-linzhi/Blob/issues/7#issue-1582342015">4.Pixi.js</a></h6>
 
+<h6><a href="https://github.com/linzhi-linzhi/Blob/issues/18#issue-1651771113">5.es6+ api</a></h6>
