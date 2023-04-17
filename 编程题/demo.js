@@ -239,3 +239,69 @@ repeat(() => {
 
 
 
+
+/**
+ *   虚拟dom转真实dom
+ **/
+
+const vnode = {
+    tag: 'div',
+    attrs: {
+        id: 'app',
+    },
+    children: [{
+            tag: 'span',
+            children: [{
+                tag: 'a',
+                children: [],
+            }],
+        },
+        {
+            tag: 'span',
+            children: [{
+                    tag: 'a',
+                    children: [],
+                },
+                {
+                    tag: 'a',
+                    children: [],
+                },
+            ],
+        },
+    ],
+}
+
+render(vnode, document.querySelector('#root'))
+
+/**
+ * @description: 创建节点，添加到容器中
+ * @param {type} vnode
+ * @param {type} container
+ */
+
+
+function render(vnode, container) {
+    const {
+        tag,
+        attrs,
+        children
+    } = vnode
+    let vdom = document.createElement(tag)
+
+    if (typeof attrs === 'object') {
+        for (const key in attrs) {
+            vdom[key] = attrs[key]
+        }
+
+    }
+
+    if (children.length > 0) {
+        for (let i = 0; i < children.length; i++) {
+            render(children[i], vdom)
+        }
+    }
+
+    container.appendChild(vdom)
+
+}
+
