@@ -364,11 +364,10 @@ executeAsyncTasks()
 
 
 //  2 reduce 循环处理
-const initialPromise = Promise.resolve();
 
 const sequencePromise = asyncTasks.reduce((prevPromise, nextPromise) => {
     return prevPromise.then(nextPromise);
-}, initialPromise);
+}, Promise.resolve());
 
 sequencePromise
     .then(() => {
