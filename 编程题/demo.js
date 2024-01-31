@@ -1,6 +1,6 @@
 /**
  *  遍历一个dom树
-**/
+ **/
 
 function traversal(node) {
     if (node && node.type === 1) {
@@ -25,7 +25,7 @@ function traversal(node) {
 
 /**
  *   原型链接输出
-**/
+ **/
 function Foo() {
     Foo.prototype.a = function () {
         console.log(1)
@@ -41,10 +41,10 @@ Foo.prototype.a = function () {
     console.log(4)
 }
 
-Foo.a()                     // 3 // 直接找Foo这个函数对象上面的a
+Foo.a() // 3 // 直接找Foo这个函数对象上面的a
 let obj = new Foo()
-obj.a()                     // 2 在this上找到a 不查找原型链
-Foo.prototype.a()           // 1 // 在构造函数实例化的时候 被重写了
+obj.a() // 2 在this上找到a 不查找原型链
+Foo.prototype.a() // 1 // 在构造函数实例化的时候 被重写了
 
 
 
@@ -52,7 +52,7 @@ Foo.prototype.a()           // 1 // 在构造函数实例化的时候 被重写�
 
 /**
  *   二叉树的层序遍历
-**/
+ **/
 
 /**
  * 装饰器
@@ -66,10 +66,10 @@ Foo.prototype.a()           // 1 // 在构造函数实例化的时候 被重写�
 //     right
 // }
 
-function levelOrder(root){
+function levelOrder(root) {
     if (!root) return []
     let res = []
-    const help = (node,deep)=>{
+    const help = (node, deep) => {
         if (!node) return
         // 初始化层级
         if (!res[deep]) {
@@ -89,15 +89,15 @@ function levelOrder(root){
 
 /**
  *   计算乘阶
-**/
+ **/
 
-function multiply(n){
+function multiply(n) {
     if (n === 1) {
         return n
-    }else{
+    } else {
         let num = n
         n--
-        return num*multiply(n)
+        return num * multiply(n)
     }
 }
 
@@ -105,7 +105,7 @@ function multiply(n){
 
 /**
  *   数组去重
-**/
+ **/
 
 // ES6基本类型去重
 function unique(arr) {
@@ -115,9 +115,9 @@ function unique(arr) {
 
 /**
  *   控制最大并发请求数
-**/
+ **/
 
-function concurrencyRequest(urls,maxNum){
+function concurrencyRequest(urls, maxNum) {
     let urlArr = [...urls]
     let count = 0
     let resNum = 0
@@ -127,20 +127,20 @@ function concurrencyRequest(urls,maxNum){
         edit(resNum)
     }
 
-    function edit(index){
-        count ++ 
-        resNum ++
-        fetch(urlArr[index]).then(res=>{
+    function edit(index) {
+        count++
+        resNum++
+        fetch(urlArr[index]).then(res => {
             console.log(res)
-            resArr[index] = res 
-        }).catch(err=>{
+            resArr[index] = res
+        }).catch(err => {
             console.log(err)
-            resArr[index] = err 
-        }).finally(()=>{
-            count --
+            resArr[index] = err
+        }).finally(() => {
+            count--
             if (resNum < urlArr.length) {
                 edit(resNum)
-            } else if( count === 0) {
+            } else if (count === 0) {
                 console.log('resArr', resArr)
             }
         })
@@ -152,62 +152,65 @@ function concurrencyRequest(urls,maxNum){
 
 /**
  *   扁平数据结构转Tree
-**/
+ **/
 
 // 递归查找
 
 const getChildren = (data, result, pid) => {
-  for (const item of data) {
-    if (item.pid === pid) {
-      const newItem = {...item, children: []};
-      result.push(newItem);
-      getChildren(data, newItem.children, item.id);
+    for (const item of data) {
+        if (item.pid === pid) {
+            const newItem = {
+                ...item,
+                children: []
+            };
+            result.push(newItem);
+            getChildren(data, newItem.children, item.id);
+        }
     }
-  }
 }
 
 const arrayToTree = (data, pid) => {
-  const result = [];
-  getChildren(data, result, pid)
-  return result;
+    const result = [];
+    getChildren(data, result, pid)
+    return result;
 }
 
 
 // 先把数据转成Map去存储，之后遍历的同时借助对象的引用，直接从Map找对应的数据做存储。不同点在遍历的时候即做Map存储,有找对应关系。性能会更好。
 
 function arrayToTree(items) {
-  const result = [];   // 存放结果集
-  const itemMap = {};  
-  for (const item of items) {
-    const id = item.id;
-    const pid = item.pid;
+    const result = []; // 存放结果集
+    const itemMap = {};
+    for (const item of items) {
+        const id = item.id;
+        const pid = item.pid;
 
-    if (!itemMap[id]) {
-      itemMap[id] = {
-        children: [],
-      }
-    }
-
-    itemMap[id] = {
-      ...item,
-      children: itemMap[id]['children']
-    }
-
-    const treeItem =  itemMap[id];
-
-    if (pid === 0) {
-      result.push(treeItem);
-    } else {
-      if (!itemMap[pid]) {
-        itemMap[pid] = {
-          children: [],
+        if (!itemMap[id]) {
+            itemMap[id] = {
+                children: [],
+            }
         }
-      }
-      itemMap[pid].children.push(treeItem)
-    }
 
-  }
-  return result;
+        itemMap[id] = {
+            ...item,
+            children: itemMap[id]['children']
+        }
+
+        const treeItem = itemMap[id];
+
+        if (pid === 0) {
+            result.push(treeItem);
+        } else {
+            if (!itemMap[pid]) {
+                itemMap[pid] = {
+                    children: [],
+                }
+            }
+            itemMap[pid].children.push(treeItem)
+        }
+
+    }
+    return result;
 }
 
 
@@ -305,3 +308,72 @@ function render(vnode, container) {
 
 }
 
+
+/**
+ *  异步任务数组使用 Promise 进行顺序处理
+ **/
+
+let asyncTask1 = function () {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log("asyncTask1")
+            resolve("resolveasyncTask1");
+        }, 2000);
+
+    });
+}
+
+let asyncTask2 = function () {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log("asyncTask2")
+            resolve("resolveasyncTask2");
+        }, 2000);
+    });
+}
+
+let asyncTasks = [
+    asyncTask1,
+    asyncTask2,
+];
+
+
+
+//  1 for 循环处理
+async function executeAsyncTasks() {
+    for (let task of asyncTasks) {
+        let result = await task();
+        console.log(result);
+    }
+
+    // forEach()方法中的回调函数是async函数，而async函数返回的是一个Promise对象，而不是直接执行异步任务。在这种情况下，forEach循环不会等待每个异步任务完成，而是立即执行下一个任务。
+    // asyncTasks.forEach(async (ele) => {
+    //   let a = await ele()
+    //   console.log(a)
+    // })
+
+}
+executeAsyncTasks()
+    .then(() => {
+        console.log("All tasks completed");
+    })
+    .catch(error => {
+        console.error("Error:", error);
+    });
+
+
+
+//  2 reduce 循环处理
+const initialPromise = Promise.resolve();
+
+const sequencePromise = asyncTasks.reduce((prevPromise, nextPromise) => {
+    return prevPromise.then(nextPromise);
+}, initialPromise);
+
+sequencePromise
+    .then(() => {
+        console.log("All tasks completed");
+    })
+    .catch(error => {
+        console.error("Error:", error);
+    });
