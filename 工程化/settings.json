@@ -1,0 +1,83 @@
+{
+    "javascript.format.enable": false,
+    "vetur.validation.template": false,
+    "vetur.completion.autoImport": false,
+  
+    "vetur.languageFeatures.updateImportOnFileMove": false,
+    "vetur.languageFeatures.semanticTokens": false,
+    "vetur.languageFeatures.codeActions": false,
+    "vetur.underline.refValue": false,
+    "vetur.validation.interpolation": false,
+    "vetur.validation.script": false,
+    "vetur.validation.style": false,
+    "breadcrumbs.enabled": false,
+    "eslint.enable": true,
+  
+    // Vetur插件配置
+    "vetur.format.enable": true, // 设置是否禁用插件格式化功能 // 默认为true，即开启
+    "vetur.format.defaultFormatter.css": "prettier", // 设置css代码(<style>包含的代码块）默认格式化器
+    "vetur.format.defaultFormatter.sass": "sass-formatter",
+    "vetur.format.defaultFormatter.postcss": "prettier",
+    "vetur.format.defaultFormatter.scss": "prettier",
+    "vetur.format.defaultFormatter.less": "prettier",
+    "vetur.format.defaultFormatter.stylus": "stylus-supremacy",
+    "vetur.format.defaultFormatter.html": "prettier", // 设置html代码(<template>包含的代码块)默认格式化器
+    "vetur.format.defaultFormatter.js": "prettier-eslint", // 设置js代码<script>包含的代码块）默认格式化器
+    "vetur.format.defaultFormatter.ts": "prettier", // 设置vetur默认使用 prettier格式化代码
+    "vetur.format.options.tabSize": 2, // 设置tab键占用的空格数，该配置将被所有格式化器继承
+    "vetur.format.options.useTabs": false, // 设置是否使用tab键缩进 默认false，即不使用，该配置将被所有格式化器继承
+    //"vetur.ignoreProjectWarning": true // 控制是否忽略关于vscode项目配置错误的告警，默认为false，即不忽略
+  
+    "eslint.validate": ["javascript", "javascriptreact", "vue"],
+  
+    "editor.parameterHints.enabled": false,
+  
+    "vetur.format.defaultFormatter.pug": "none",
+  
+    "git.confirmSync": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "git.enableSmartCommit": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "[javascript]": {
+      "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "[vue]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+  
+    "chatgpt.gpt3.apiKey": "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",
+    "workbench.editorAssociations": {
+      "*.vsix": "default"
+    },
+  
+    "editor.quickSuggestions": {
+      //开启自动显示建议
+      "other": true,
+      "comments": true,
+      "strings": true
+    },
+    "prettier.eslintIntegration": true,
+    "vetur.format.defaultFormatterOptions": {
+      "js-beautify-html": {
+        "wrap_attributes": "force-aligned" //属性强制折行对齐
+      },
+      "prettier": {
+        "semi": false,
+        "singleQuote": true
+      },
+      "vscode-typescript": {
+        "semi": false,
+        "singleQuote": true
+      }
+    },
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.fixAll.eslint": "explicit"
+    },
+    "liveServer.settings.AdvanceCustomBrowserCmdLine": "",
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "beautify.config": ""
+  }
+  
