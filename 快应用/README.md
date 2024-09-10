@@ -15,3 +15,5 @@
 #### 2.广告显示
 
 接入广告接口时，调试测试接口需要在调试器中选择这几家厂商引擎平台（例如vivo需要选择com.vivo.hybrid平台），预览版是不支持广告接口的（包括云真机）。 文档地址：https://bbs.quickapp.cn/forum.php?mod=viewthread&tid=3678
+
+#### 3.修改 manifest.json 需要重启应用生效
